@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101a3c">
+  <meta name="description" content="Meet SmartWallet, a personal cash flow app that helps you track transactions, manage budgets, and understand your finances with ease.">
+  <title>SmartWallet — Take control of your money, with confidence</title>
+  <link rel="icon" type="image/png" href="logo_smartwallet.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="SmartWallet home">
+        <img src="logo_smartwallet.png" alt="" width="44" height="44">
+        <span>Smart<span class="brand-accent">Wallet</span></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#get-started">Discover SmartWallet <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> Money management, made simple</div>
+        <h1>Give your money direction. <span>Stay in control.</span></h1>
+        <p class="hero-description">SmartWallet helps you track income and expenses, understand your cash flow, and plan your finances with confidence.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#how-it-works">See how it works <span aria-hidden="true">→</span></a>
+          <a class="button button-quiet" href="#features"><span class="play-icon" aria-hidden="true">▶</span> Explore features</a>
+        </div>
+        <div class="hero-note">
+          <div class="avatar-stack" aria-hidden="true"><span>R</span><span>A</span><span>D</span></div>
+          <p>For <strong>everyone's</strong> financial journey</p>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="SmartWallet cash flow dashboard illustration">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="sparkle sparkle-one">✦</div>
+        <div class="sparkle sparkle-two">✧</div>
+        <div class="float-chip chip-income"><span class="chip-icon income-icon">↗</span><span><small>Income</small><strong>+ Rp 8,500,000</strong></span></div>
+        <div class="float-chip chip-expense"><span class="chip-icon expense-icon">↙</span><span><small>Expenses</small><strong>− Rp 3,250,000</strong></span></div>
+
+        <div class="dashboard-card">
+          <div class="dashboard-top">
+            <div class="mini-brand"><img src="logo_smartwallet.png" alt="" width="28" height="28"><span>SmartWallet</span></div>
+            <span class="month-pill">This month <span aria-hidden="true">⌄</span></span>
+          </div>
+          <div class="balance-label">TOTAL BALANCE</div>
+          <div class="balance-value">Rp 12,450,000 <span class="balance-trend">↗ 12.8%</span></div>
+          <div class="chart-heading"><strong>Cash flow</strong><span>Jan — Jun</span></div>
+          <div class="chart" aria-label="Six-month income and expense chart">
+            <div class="chart-grid"><i></i><i></i><i></i></div>
+            <div class="chart-bars">
+              <div class="bar-group"><i style="--bar:40%"></i><i style="--bar:26%"></i><small>Jan</small></div>
+              <div class="bar-group"><i style="--bar:57%"></i><i style="--bar:36%"></i><small>Feb</small></div>
+              <div class="bar-group"><i style="--bar:48%"></i><i style="--bar:30%"></i><small>Mar</small></div>
+              <div class="bar-group"><i style="--bar:72%"></i><i style="--bar:42%"></i><small>Apr</small></div>
+              <div class="bar-group"><i style="--bar:62%"></i><i style="--bar:34%"></i><small>May</small></div>
+              <div class="bar-group"><i style="--bar:88%"></i><i style="--bar:50%"></i><small>Jun</small></div>
+            </div>
+          </div>
+          <div class="chart-legend"><span><i class="legend-income"></i>Income</span><span><i class="legend-expense"></i>Expenses</span></div>
+          <div class="recent-row"><span class="transaction-icon food-icon">☕</span><span class="transaction-name"><strong>Coffee &amp; lunch</strong><small>Today · Food</small></span><strong class="amount-negative">− Rp 45,000</strong></div>
+          <div class="recent-row"><span class="transaction-icon work-icon">✦</span><span class="transaction-name"><strong>Monthly salary</strong><small>Yesterday · Income</small></span><strong class="amount-positive">+ Rp 5,000,000</strong></div>
+        </div>
+        <div class="ai-bubble"><span class="ai-sparkle">✦</span><span><small>Smart AI</small><strong>Your cash flow is looking good!</strong></span><span class="bubble-arrow">↗</span></div>
+      </div>
+      <a class="scroll-cue" href="#about"><span></span> Scroll to learn more</a>
+    </section>
+
+    <section class="intro section-shell" id="about">
+      <div class="section-kicker">MEET SMARTWALLET</div>
+      <div class="intro-content">
+        <h2>More than just tracking.<br><span>Know where your money goes.</span></h2>
+        <div class="intro-text">
+          <p>SmartWallet is a personal cash flow app that brings your finances together in one place. Easily log transactions, get a clear picture of your money, and decide what to do next with confidence.</p>
+          <a class="text-link" href="#features">See what you can do <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-item"><strong>01</strong><span>Track everyday<br>transactions</span></div>
+        <div class="stat-item"><strong>02</strong><span>See your cash flow<br>more clearly</span></div>
+        <div class="stat-item"><strong>03</strong><span>Plan your financial<br>goals</span></div>
+        <div class="stat-caption">Small habits can lead<br>to big changes.</div>
+      </div>
+    </section>
+
+    <section class="features-section" id="features">
+      <div class="section-shell features-inner">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">EVERYTHING YOU NEED</div>
+            <h2>Understand your money.<br><span>Make your next move easier.</span></h2>
+          </div>
+          <p>Designed to make your financial picture simple—not overwhelming.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card feature-card-large">
+            <div class="feature-icon icon-blue">↗</div>
+            <span class="feature-number">01 / CASH FLOW</span>
+            <h3>Know where you stand, anytime.</h3>
+            <p>See your balance, income, expenses, and net cash flow in a clear, easy-to-understand summary.</p>
+            <div class="mini-cashflow"><span>This month's cash flow</span><strong>+ Rp 2,750,000</strong><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon icon-purple">◷</div>
+            <span class="feature-number">02 / TRANSACTIONS</span>
+            <h3>Track transactions, the easy way.</h3>
+            <p>Organize your transactions and quickly find your income and spending history.</p>
+            <div class="feature-decoration receipt-decoration"><span>Expense</span><strong>− Rp 85,000</strong><i></i><i></i></div>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon icon-green">◎</div>
+            <span class="feature-number">03 / YOUR PLAN</span>
+            <h3>Make your plans feel achievable.</h3>
+            <p>Set a budget and savings goals, then follow your progress one step at a time.</p>
+            <div class="goal-decoration"><span>Dream vacation</span><strong>68%</strong><div><i></i></div></div>
+          </article>
+          <article class="feature-card feature-card-ai">
+            <div class="feature-icon icon-yellow">✦</div>
+            <span class="feature-number">04 / SMART AI</span>
+            <h3>A friendly guide for money questions.</h3>
+            <p>Ask the AI chatbot about your spending habits or financial records and get easy-to-understand answers.</p>
+            <div class="chat-decoration"><div class="chat-avatar">✦</div><span>How are my expenses this month?</span><div class="chat-reply">Your spending is more consistent. Great work! ✨</div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-section section-shell" id="how-it-works">
+      <div class="section-kicker">START WITH THE BASICS</div>
+      <div class="steps-heading"><h2>Managing your cash flow? <span>Easy.</span></h2><p>Three simple steps to get to know your money better.</p></div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-index">01</span><div class="step-symbol symbol-one">＋</div><h3>Log income &amp; expenses</h3><p>Add a transaction, choose a category, and keep everything organized in one place.</p></article>
+        <div class="step-connector" aria-hidden="true">······→</div>
+        <article class="step-card"><span class="step-index">02</span><div class="step-symbol symbol-two">▥</div><h3>Understand your cash flow</h3><p>Explore summaries and charts to spot money patterns—no manual calculations needed.</p></article>
+        <div class="step-connector" aria-hidden="true">······→</div>
+        <article class="step-card"><span class="step-index">03</span><div class="step-symbol symbol-three">✧</div><h3>Plan for what's next</h3><p>Set a budget or savings goal, then keep track of your progress as you go.</p></article>
+      </div>
+    </section>
+
+    <section class="cta-section section-shell" id="get-started">
+      <div class="cta-sparkle">✦</div>
+      <div class="cta-copy"><div class="section-kicker">START WITH ONE SMALL STEP</div><h2>Give your money<br><span>a purpose.</span></h2><p>Get to know your cash flow. Little by little, financial decisions can feel easier.</p></div>
+      <a class="button button-light" href="https://drive.google.com/file/d/1jHFYwIvW3CVY6PL5Hap3PBgwzLhSOwH_/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download SmartWallet For Windows <span aria-hidden="true">↓</span></a>
+      <div class="cta-orb"></div>
+    </section>
+
+    <section class="faq-section section-shell" id="faq">
+      <div class="faq-intro"><div class="section-kicker">HAVE QUESTIONS?</div><h2>Quick answers,<br><span>more confidence.</span></h2><p>Need more help? Smart AI is here to answer questions about your finances.</p></div>
+      <div class="faq-list">
+        <details><summary>What is SmartWallet?<span>+</span></summary><div class="faq-answer"><div class="faq-answer-inner"><p>SmartWallet is a personal cash flow app that helps you track transactions, review your finances, and make a plan.</p></div></div></details>
+        <details><summary>Can SmartWallet be used by multiple people?<span>+</span></summary><div class="faq-answer"><div class="faq-answer-inner"><p>Yes. Each person can use their own account and manage their financial records separately.</p></div></div></details>
+        <details><summary>What can I ask the AI chatbot?<span>+</span></summary><div class="faq-answer"><div class="faq-answer-inner"><p>Ask about your cash flow summary or spending habits. Use AI to help understand your records, not as a replacement for professional financial advice.</p></div></div></details>
+        <details><summary>Do I need to be good with money to get started?<span>+</span></summary><div class="faq-answer"><div class="faq-answer-inner"><p>Not at all. SmartWallet is designed to be easy to understand. Start by tracking everyday transactions and explore your summaries at your own pace.</p></div></div></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main section-shell">
+      <a class="brand footer-brand" href="#home"><img src="logo_smartwallet.png" alt="" width="44" height="44"><span>Smart<span class="brand-accent">Wallet</span></span></a>
+      <p>Take control of your money,<br>with confidence.</p>
+      <div class="footer-nav"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a><a href="#home">Back to top ↑</a></div>
+    </div>
+    <div class="footer-bottom section-shell"><span>© <span id="current-year"></span> SmartWallet</span><span>Made for better financial decisions.</span></div>
+  </footer>
+</body>
+</html>
