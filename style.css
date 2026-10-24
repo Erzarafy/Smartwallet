@@ -114,6 +114,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 .features-section.reveal-ready .feature-card { transition-delay: var(--reveal-delay, 0ms); }
 .features-section.reveal-ready .section-heading.is-visible,
 .features-section.reveal-ready .feature-card.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+.features-section.reveal-ready .feature-card { transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1), translate .35s ease, box-shadow .35s ease; }
 .feature-icon { display: grid; width: 41px; height: 41px; place-items: center; margin-bottom: 20px; border-radius: 11px; font-size: 20px; }.icon-blue { color: #5274eb; background: #e9eeff; }.icon-purple { color: #8869d7; background: #f0ebff; }.icon-green { color: #3e9d7e; background: #e4f8ef; }.icon-yellow { color: #ffe19d; background: #44528b; }
 .feature-number { color: #9ba3b5; font-size: 9px; font-weight: 700; letter-spacing: 1.3px; }.feature-card-ai .feature-number { color: #9eacd4; }
 .feature-card h3 { max-width: 280px; margin: 11px 0 9px; font-size: 20px; line-height: 1.32; letter-spacing: -.6px; }.feature-card p { max-width: 300px; margin: 0; color: #727c91; font-size: 12px; line-height: 1.75; }.feature-card-ai p { color: #b3bdd6; }
@@ -153,3 +154,134 @@ h1, h2, h3 { font-family: var(--font-display); }
   .section-shell { width: calc(100% - 34px); }.nav-shell { width: calc(100% - 34px); }.hero { padding-top: 119px; }.hero h1 { font-size: 43px; }.hero-actions { align-items: flex-start; flex-direction: column; gap: 10px; }.button-quiet { padding-left: 4px; }.hero-art { min-height: 388px; margin-right: -40px; margin-left: -40px; transform: scale(.83); }.chip-income { left: 6%; }.chip-expense { right: 2%; }.ai-bubble { right: 6%; }.balance-value { font-size: 21px; }.feature-grid { grid-template-columns: 1fr; }.feature-card-large { grid-column: auto; min-height: 365px; }.feature-card { min-height: 270px; }.feature-card-large p { max-width: 275px; }.stats-row { grid-template-columns: 1fr 1fr; }.cta-section { width: calc(100% - 26px); padding-right: 22px; padding-left: 22px; }.footer-bottom { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* ============================================================
+   SMARTWALLET MOTION LAYER (oleh Budi)
+   - Semua entrance memakai properti opacity/translate/scale
+     (terpisah dari `transform`) agar tidak bentrok dengan
+     rotate statis & tilt mouse.
+   - State awal yang disembunyikan selalu di-gate oleh
+     body.anim-ready (ditambah via JS) -> aman tanpa JS.
+   ============================================================ */
+:root {
+  --ease-lux: cubic-bezier(.16, 1, .3, 1);
+  --ease-pop: cubic-bezier(.2, .9, .3, 1.12);
+}
+
+/* ---------- 1. HERO ENTRANCE (koreografi saat load) ---------- */
+body.anim-ready .hero-copy > * { opacity: 0; animation: rise-in 1s var(--ease-lux) both; }
+body.anim-ready .hero-copy > :nth-child(1) { animation-delay: .05s; }
+body.anim-ready .hero-copy > :nth-child(2) { animation-delay: .16s; }
+body.anim-ready .hero-copy > :nth-child(3) { animation-delay: .29s; }
+body.anim-ready .hero-copy > :nth-child(4) { animation-delay: .41s; }
+body.anim-ready .hero-copy > :nth-child(5) { animation-delay: .53s; }
+@keyframes rise-in { from { opacity: 0; translate: 0 22px; filter: blur(6px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
+
+body.anim-ready .dashboard-card { opacity: 0; animation: card-in 1.1s var(--ease-lux) both .28s; }
+@keyframes card-in { from { opacity: 0; translate: 0 36px; scale: .94; } to { opacity: 1; translate: 0 0; scale: 1; } }
+.dashboard-card { transition: transform .25s ease-out; } /* smoothing untuk tilt mouse */
+.hero-art { perspective: 1200px; }
+
+body.anim-ready .float-chip { opacity: 0; animation: chip-in .85s var(--ease-pop) both, chip-float 6s ease-in-out 1.8s infinite; }
+body.anim-ready .chip-income { animation-delay: .78s, 1.9s; }
+body.anim-ready .chip-expense { animation-delay: .92s, 2.15s; }
+@keyframes chip-in { from { opacity: 0; translate: 0 16px; scale: .6; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes chip-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -11px; } }
+
+body.anim-ready .ai-bubble { opacity: 0; animation: chip-in .85s var(--ease-pop) both 1.06s, chip-float 7s ease-in-out 2.4s infinite; }
+
+body.anim-ready .orbit { opacity: 0; animation: orbit-in 1.3s ease both .45s, orbit-spin 28s linear 1.8s infinite; }
+body.anim-ready .orbit-two { animation-duration: 1.3s, 38s; }
+@keyframes orbit-in { from { opacity: 0; scale: .82; } to { opacity: 1; scale: 1; } }
+@keyframes orbit-spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+.orbit-dot { position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 14px #9cebd0; }
+.orbit-two .orbit-dot { background: #8ea2ff; box-shadow: 0 0 14px #8ea2ff; }
+
+body.anim-ready .sparkle { opacity: 0; animation: sparkle-in .8s ease both, twinkle 3.4s ease-in-out 1.6s infinite; }
+body.anim-ready .sparkle-one { animation-delay: 1s, 1.7s; }
+body.anim-ready .sparkle-two { animation-delay: 1.15s, 2.3s; }
+@keyframes sparkle-in { from { opacity: 0; scale: .4; } to { opacity: 1; scale: 1; } }
+@keyframes twinkle { 0%, 100% { opacity: 1; scale: 1; } 50% { opacity: .35; scale: .82; } }
+
+body.anim-ready .scroll-cue { opacity: 0; animation: fade-in 1s ease both 1.5s; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.scroll-cue span { position: relative; overflow: hidden; }
+.scroll-cue span::before { animation: cue-drop 1.9s cubic-bezier(.4, 0, .2, 1) 1.8s infinite; }
+@keyframes cue-drop { 0% { translate: 0 -7px; opacity: 0; } 35% { opacity: 1; } 100% { translate: 0 15px; opacity: 0; } }
+
+/* indikator "live" di eyebrow */
+.status-dot { animation: dot-pulse 2.2s ease-in-out infinite; }
+@keyframes dot-pulse { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 1.45; opacity: .65; } }
+
+/* ---------- 2. CHART & ANGKA JADI HIDUP ---------- */
+body.anim-ready .chart-bars i { transform: scaleY(0); transform-origin: bottom; animation: bar-grow .9s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(.65s + var(--bd, 0ms)); }
+@keyframes bar-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.balance-count { font-variant-numeric: tabular-nums; }
+
+body.anim-ready .month-pill, body.anim-ready .chart-heading, body.anim-ready .chart-legend { opacity: 0; animation: fade-in .7s ease both; }
+body.anim-ready .month-pill { animation-delay: 1s; }
+body.anim-ready .chart-heading { animation-delay: 1.08s; }
+body.anim-ready .chart-legend { animation-delay: 1.16s; }
+body.anim-ready .recent-row { opacity: 0; animation: rise-in .7s var(--ease-lux) both 1.22s; }
+body.anim-ready .recent-row + .recent-row { animation-delay: 1.36s; }
+
+/* ---------- 3. SCROLL REVEAL GENERIK ---------- */
+body.anim-ready [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .85s ease, transform .85s var(--ease-lux), translate .35s ease, box-shadow .35s ease; transition-delay: var(--reveal-delay, 0ms); }
+body.anim-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- 4. DEKORASI FEATURE CARD JADI HIDUP ---------- */
+.features-section.reveal-ready .mini-cashflow i { transform: scaleY(.15); transform-origin: bottom; transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i { transform: scaleY(1); }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(1) { transition-delay: .35s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(2) { transition-delay: .42s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(3) { transition-delay: .49s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(4) { transition-delay: .56s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(5) { transition-delay: .63s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(6) { transition-delay: .7s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(7) { transition-delay: .77s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(8) { transition-delay: .84s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(9) { transition-delay: .91s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(10) { transition-delay: .98s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(11) { transition-delay: 1.05s; }
+.features-section.reveal-ready .feature-card.is-visible .mini-cashflow i:nth-child(12) { transition-delay: 1.12s; }
+
+.features-section.reveal-ready .goal-decoration div i { transform: scaleX(0); transform-origin: left center; transition: transform 1.1s var(--ease-lux) .4s; }
+.features-section.reveal-ready .feature-card.is-visible .goal-decoration div i { transform: scaleX(1); }
+
+.features-section.reveal-ready .chat-decoration > * { opacity: 0; translate: 0 10px; transition: opacity .5s ease, translate .5s var(--ease-lux); }
+.features-section.reveal-ready .feature-card.is-visible .chat-decoration > :nth-child(1) { opacity: 1; translate: 0 0; transition-delay: .35s; }
+.features-section.reveal-ready .feature-card.is-visible .chat-decoration > :nth-child(2) { opacity: 1; translate: 0 0; transition-delay: .5s; }
+.features-section.reveal-ready .feature-card.is-visible .chat-decoration > :nth-child(3) { opacity: 1; translate: 0 0; transition-delay: .85s; }
+
+/* ---------- 5. INTERAKSI MEWAH ---------- */
+/* kilau menyapu tombol saat hover */
+.button-primary, .button-light, .nav-cta { position: relative; overflow: hidden; }
+.button-primary::after, .button-light::after, .nav-cta::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, .38) 50%, transparent 58%); transform: translateX(-135%); transition: transform .7s ease; pointer-events: none; }
+.button-primary:hover::after, .button-light:hover::after, .nav-cta:hover::after { transform: translateX(135%); }
+
+/* kartu terangkat saat hover (pakai properti `translate` agar tidak
+   bentrok dengan transform milik reveal) */
+.feature-card:hover { translate: 0 -5px; box-shadow: 0 18px 42px rgba(16, 26, 60, .10); }
+.step-card { transition: translate .35s ease, box-shadow .35s ease, border-color .35s ease; }
+.step-card:hover { translate: 0 -4px; border-color: #d3d9ea; box-shadow: 0 14px 30px rgba(16, 26, 60, .08); }
+.step-card:hover .step-symbol { scale: 1.12; }
+.step-symbol { transition: scale .35s var(--ease-pop); }
+
+/* panah text-link bergeser */
+.text-link span { display: inline-block; transition: translate .25s ease; }
+.text-link:hover span { translate: 4px 0; }
+
+/* konektor antar step berdenyut halus */
+.step-connector { animation: connector-pulse 2.6s ease-in-out infinite; }
+@keyframes connector-pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+
+/* orb & sparkle di CTA */
+.cta-orb { animation: orb-breathe 9s ease-in-out infinite; }
+@keyframes orb-breathe { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 1.07; opacity: .85; } }
+.cta-sparkle { animation: twinkle 3s ease-in-out 1s infinite; }
+
+/* reduced-motion: animasi ambient khusus layer ini ikut dimatikan eksplisit
+   (aturan global sudah menjinakkan sisanya) */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-dot, .scroll-cue span::before { animation: none !important; }
+}
